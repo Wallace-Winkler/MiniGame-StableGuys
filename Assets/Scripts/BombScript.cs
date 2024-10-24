@@ -5,22 +5,15 @@ using UnityEngine;
 public class BombScript : MonoBehaviour
 {
 
-    [SerializeField] private GameObject explosionPrefab;
-    [SerializeField] private float timeForExplosion = 5f;
-    // Start is called before the first frame update
+    [SerializeField] private float bombExplode = 5;
+    [SerializeField] private GameObject explodeEffect;
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         StartCoroutine(explomb());
     }
 
     IEnumerator explomb() {
-        yield return new WaitForSeconds(timeForExplosion);
+        yield return new WaitForSeconds(bombExplode);
 
         Destroy(gameObject);
 
@@ -28,6 +21,22 @@ public class BombScript : MonoBehaviour
     }
 
     void explosion() {
-        Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
+        Instantiate(explodeEffect, transform.position, explodeEffect.transform.rotation);
+        
+    }
+
+    IEnumerator bombExplodeCoroutine()
+    {
+        yield return new WaitForSeconds(bombExplode);
+
+        explode();
+        
+    }
+
+    void explode()
+    {
+        Destroy(gameObject);
+        
+        Instantiate(explodeEffect, transform.position, explodeEffect.transform.rotation);
     }
 }
