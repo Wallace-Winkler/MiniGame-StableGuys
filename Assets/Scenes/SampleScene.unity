@@ -1020,6 +1020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movimentVector: {x: 0, y: 0}
 --- !u!1 &1346074112
 GameObject:
   m_ObjectHideFlags: 0
